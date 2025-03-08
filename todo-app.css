@@ -22,22 +22,26 @@ h1 span{
     color: #FED36A;
 }
 input[type="text"]{
-    width:195px;
-    height: 40px ;
+    width: 100%;
+    height: 40px;
     border: 3px solid #FED36A;
     border-radius: 3px;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 input[type="text"]:focus {
-    border: 3px solid #FED36A;
     border-radius: 3px;
     outline: none;
 }
 #btn{
     background-color: #FED36A;
     border: none;
+    border-radius: 3px;
     font-family: inter;
-    padding: 1rem;
+    padding: 0.95rem;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    margin-top: 0.5rem;
 }
 
 ul{
@@ -47,12 +51,11 @@ ul  li{
     vertical-align: middle;
 }
 
-ul .ul {
+ul .ulStyle {
     background-color: #324650;
     list-style-type: none;
     font-family: inter;
     border-radius: 3px;
-    
     padding: 0.9rem;
     color: white;
     margin-top: 0.5rem;
@@ -74,11 +77,21 @@ input[type="checkbox"] {
 }
 
 .slash{
-    /* opacity: 0.5; */
-    color: rgba(194, 192, 192, 0.792);
+    opacity: 0.3;
+    color: grey;
     text-decoration: line-through;
 }
 
 span .todo-list{
     margin-bottom: 2rem;
+}
+
+.flexTodo{
+    display: flex;
+    flex-direction: row;
+}
+footer{
+    color: white;
+    font-family: inter;
+    text-align: center;
 }
