@@ -6,12 +6,16 @@
     <title>Todo App</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="todo-app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <h1>Manage Task with <span>Todo List</span></h1>
     <div class="contain">
-        <input type="text" id="enterTodo" class="input-text">
-    <button id="btn" >Add</button>
+        <input type="text" id="enterTodo" class="input-text" placeholder="enter todo">
+    <div class="wrap-btn">
+        <button id="btn" >Add</button>
+    <button id="resetBtn" >Reset</button>
+    </div>
     <!-- add tasks -->
     <ul id="newTodo">
     
