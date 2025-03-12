@@ -28,10 +28,22 @@ ulMain.addEventListener("click", function(event) {
 // Mark Tasks as Completed end
 
 
-// Delete Tasks end
+// Delete Tasks start
 ulMain.addEventListener("click", function(event) {
     if(event.target.classList.contains("fa-circle-xmark")) {
+        // Find the task text
+        var taskText = event.target.previousElementSibling.textContent;
+        
+        // Remove the task from the newTodo array
+        newTodo = newTodo.filter(function(todo) {
+            return todo !== taskText;
+        });
+
+        // Remove the task from the DOM
         event.target.parentElement.parentElement.remove();
+
+        // Save the updated tasks to local storage
+        saveTasks();
     }
 });
 // Delete Tasks end

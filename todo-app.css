@@ -1,7 +1,7 @@
-/* @font-face {
+@font-face {
     font-family: Pilat;
-    src: url(fonts/PilatExtended-Regular.ttf);
-} */
+    src: url('fonts/PilatExtended-Regular.ttf');
+}
 
 body{
     background-color: #212832;
@@ -97,7 +97,7 @@ ul .ulStyle {
 
 input[type="checkbox" i]{
     margin: 0rem 0.5rem 0rem 0rem;
-    font-size:5rem ;
+    font-size: 5rem;
     vertical-align: middle;
 }
 
