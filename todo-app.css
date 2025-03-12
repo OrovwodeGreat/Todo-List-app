@@ -1,6 +1,6 @@
 @font-face {
     font-family: Pilat;
-    src: url('fonts/PilatExtended-Regular.ttf');
+    src: url('fonts/PilatExtended-Book.ttf');
 }
 
 body{
@@ -8,6 +8,7 @@ body{
     font-family: Pilat;
     max-width: 400px;
     margin: 0 auto;
+    font-weight: bold;
 }
 .contain{
     background-color: #28343B;
