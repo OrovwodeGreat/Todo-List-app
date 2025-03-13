@@ -23,6 +23,14 @@ button.addEventListener("click", function() {
 ulMain.addEventListener("click", function(event) {
     if(event.target.tagName === "INPUT" && event.target.type === "checkbox") {
         event.target.nextElementSibling.classList.toggle("slash");
+        var taskText = event.target.nextElementSibling.textContent;
+        newTodo = newTodo.map(function(todo) {
+            if (todo.text === taskText) {
+                return { text: todo.text, completed: event.target.checked };
+            }
+            return todo;
+        });
+        saveTasks();
     }
 });
 // Mark Tasks as Completed end
@@ -56,7 +64,7 @@ function addTask() {
         return alert("input is empty");  // Check if input is empty
     }; 
 
-    newTodo.push(input); //pushes the input to the newTodo array
+    newTodo.push({ text: input, completed: false }); //pushes the input as an object to the newTodo array
 
     // Clear the ul element before appending new tasks
     ulMain.innerHTML = "";
@@ -72,7 +80,8 @@ function addTask() {
 
         // Set attributes
         checkbox.type = "checkbox";
-        label.textContent = todo; 
+        label.textContent = todo.text; 
+        checkbox.checked = todo.completed; // Set the checkbox state based on the completed property
         label.classList.add("todo-span");
         checkbox.classList.add("input-checkbox");
 
@@ -113,7 +122,8 @@ function loadTasks() {
 
             // Set attributes
             checkbox.type = "checkbox";
-            label.textContent = todo; 
+            label.textContent = todo.text; 
+            checkbox.checked = todo.completed; // Set the checkbox state based on the completed property
             label.classList.add("todo-span");
             checkbox.classList.add("input-checkbox");
 
