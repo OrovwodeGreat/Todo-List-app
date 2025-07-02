@@ -3,24 +3,76 @@
     src: url('fonts/PilatExtended-Book.ttf');
 }
 
+:root {
+    --color-bg: #212832;
+    --color-container: #28343B;
+    --color-primary: #FED36A;
+    --color-primary-head: #FED36A;
+    --color-primary-hover: #d69c09;
+    --color-reset-hover: #324650;
+    --color-list-bg: #324650;
+    --color-checkbox-border: #fff;
+    --color-checkbox-bg-checked: #212832;
+    --color-checkbox-border-checked: #212832;
+    --color-list-text: #fff;
+    --color-strike: grey;
+    --color-strike-opacity: 0.3;
+    --color-priority-bg: rgb(182, 227, 255);
+    --color-footer: #fff;
+    --list-shadow:-2px -2px 5px rgba(0,0,0,0.2);
+}
+
+.lightmode{
+--color-primary-head: #FED36A;
+--color-bg: #f2f2f2;
+--color-container: white;
+--color-list-bg: white;
+--color-footer: black;
+--list-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+--color-primary-dark: #edb528;
+--color-list-text: black;
+--color-checkbox-border: grey;
+}
+
 body{
-    background-color: #212832;
+    background-color: var(--color-bg);
     font-family: Pilat;
     max-width: 400px;
     margin: 0 auto;
     font-weight: bold;
 }
+
+#toggleSwitch{
+    text-align: right;
+    margin-top: 1rem;
+}
+#toggle{
+    background-color: rgb(81, 80, 80);
+    padding:0.5rem;
+    border-radius: 5rem;
+    border: none;
+}
+#toggle img:first-child{
+    display: none;
+}
+
+.lightmode #toggle img:last-child{
+    display: none;
+}
+.lightmode #toggle img:first-child{
+    display: block;
+}
 .contain{
-    background-color: #28343B;
+    background-color: var(--color-container);
     padding: 1rem;
 }
 h1{
-    color: white;
+    color: var(--color-footer);
     font-size: 30px;
     text-align: center;
 }
 h1 span{
-    color: #FED36A;
+    color: var(--color-primary-head);
 }
 input[type="text"]{
     width: 100%;
@@ -36,14 +88,14 @@ input[type="text"]:focus {
 }
 input[placeholder]{
     font-size: 0.9rem;
-    font-family: inter;
+    font-family: inter, poppins;
 }
 
 #btn{
     background-color: #FED36A;
     border: none;
     border-radius: 3px;
-    font-family: inter;
+    font-family: poppins;
     font-size: inherit;
     padding: 0.5rem;
     box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
@@ -55,9 +107,10 @@ input[placeholder]{
 
 #resetBtn{
     background-color: white;
+    box-shadow: var(--list-shadow);
     border: none;
     border-radius: 3px;
-    font-family: inter;
+    font-family: poppins;
     font-size: inherit;
     padding: 0.5rem;
     box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
@@ -69,7 +122,7 @@ input[placeholder]{
 
 .wrap-btn{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5rem;
 }
 ul{
@@ -79,23 +132,35 @@ ul  li{
     vertical-align: middle;
 }
 span .todo-span{
-    
     vertical-align: middle;
 }
 
 ul .ulStyle {
-    background-color: #324650;
+    background-color: var(--color-list-bg);
+    box-shadow: var(--list-shadow) ;
     list-style-type: none;
-    font-family: inter;
+    font-family: inter, poppins;
     border-radius: 3px;
     padding: 0.9rem;
-    color: white;
+    color:var(--color-list-text);
     vertical-align: middle;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     font-size: 0.85rem;
 }
-
+ul .ulStyle li{
+    display: flex;
+    justify-content: space-between;
+}
+ul .ulStyle li span.todo-span{
+    flex: 1;
+    text-wrap: wrap ;
+    align-self: center;
+    vertical-align: middle;
+    font-size: 16.5px;
+    font-weight: 500;
+    font-family: inter, poppins;
+}
 input[type="checkbox" i]{
     margin: 0rem 0.5rem 0rem 0rem;
     font-size: 5rem;
@@ -105,6 +170,7 @@ input[type="checkbox" i]{
 input[type="checkbox"] {
     width: 15px; /* Adjust the width as needed */
     height: 15px; /* Adjust the height as needed */
+    align-self: center;
     
 }
 input[type="checkbox"] {
@@ -113,7 +179,7 @@ input[type="checkbox"] {
     -moz-appearance: none;
     width: 20px;
     height: 20px;
-    border: 2px solid white; /* Yellow border */
+    border: 2px solid var(--color-checkbox-border); /* Yellow border */
     border-radius: 3px; /* Makes it circular */
     background-color: transparent;
     cursor: pointer;
@@ -143,7 +209,29 @@ input[type="checkbox"] {
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
+
+  select#priority{
+    height: 39.5px;
+    vertical-align: middle;
+    align-self: end;
+    font-family: poppins;
+    font-size: inherit;
+    text-align: center;
+   outline: none;
+    border-radius: 0.2rem;
+    background-color: rgb(182, 227, 255);
+    border: none;
+  }
+  .priority-align{
+    align-self: center;
+    font-size: 20px;
+  }
+
+
+ul li i.fa-solid.fa-circle-xmark, .fa-solid:before{
+    vertical-align: middle;
+    align-self: center;
+}
 .slash{
     opacity: 0.3;
     color: grey;
@@ -159,11 +247,11 @@ span .todo-list{
     flex-direction: row;
 }
 footer{
-    color: white;
-    font-family: inter;
+    color:var(--color-footer);
+    font-family: inter, poppins;
     text-align: center;
     margin-top: 1rem;
-}
+} 
 
 
 /* MEDIA QUERIES */

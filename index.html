@@ -6,15 +6,28 @@
     <title>Todo App</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="todo-app.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="">
+    <div id="toggleSwitch">
+        <button id="toggle">
+            <img src="images/dark_mode.png" alt="">
+        <img src="images/light_mode.png" alt="">
+        </button>
+    </div>
     <h1>Manage Task with <span>Todo List</span></h1>
     <div class="contain">
         <input type="text" id="enterTodo" class="input-text" placeholder="enter todo">
     <div class="wrap-btn">
         <button id="btn" >Add</button>
     <button id="resetBtn" >Reset</button>
+      <select name="Prority" id="priority">
+        <option value="high">High <span class="priority-dot high">🔴</span></option>
+        <option value="medium">Meduim <span class="priority-dot medium">🟠</span></option>
+        <option value="low">Low <span class="priority-dot low">🟢</span></option>
+      </select>
     </div>
     <!-- add tasks -->
     <ul id="newTodo">

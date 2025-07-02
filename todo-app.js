@@ -1,3 +1,33 @@
+var lightMode = localStorage.getItem("lightmode");
+var toggleBtn= document.querySelector("#toggle");
+
+// Function to enable light mode
+function enableLightMode() {
+    
+    document.body.classList.add("lightmode");
+    localStorage.setItem("lightmode","active");
+}
+
+if (lightMode === "active") {
+    enableLightMode();
+}
+
+// Function to disable light mode
+function disableLightMode() {
+    document.body.classList.remove("lightmode");
+    localStorage.setItem("lightmode", null);
+}
+
+toggleBtn.addEventListener("click", () =>{
+    // document.body.classList.toggle("lightmode");
+    lightMode = localStorage.getItem("lightmode");
+    // Toggle light mode based on the current state
+    lightMode !== "active" ? enableLightMode() : disableLightMode();
+})
+
+
+
+
 // Select DOM elements
 var enterTodo = document.querySelector("#enterTodo");
 var ulMain = document.querySelector("ul");
@@ -50,18 +80,38 @@ function renderTasks() {
     checkbox.checked = todo.completed;
     checkbox.classList.add("input-checkbox");
     checkbox.setAttribute("data-id", todo.id);
+    // Add .slash class if todo is completed
+    if (todo.completed) {
+      li.classList.add("slash");
+    }
 
     var label = document.createElement("span");
     label.textContent = todo.text;
     label.classList.add("todo-span");
+    
+    var prioritySpan = document.createElement("span");
+    prioritySpan.classList.add("priority-align");
+    if (todo.priority === "high") {
+        prioritySpan.textContent = "🔴";
+    }
+    else if (todo.priority === "medium") {
+        prioritySpan.textContent = "🟠";
+    }
+    else if (todo.priority === "low") {
+        prioritySpan.textContent = "🟢";
+    }
+   
 
     var deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa-solid", "fa-circle-xmark", "delete-icon");
     deleteIcon.style.marginLeft = "10px";
     deleteIcon.setAttribute("data-id", todo.id);
 
+
+
     li.appendChild(checkbox);
     li.appendChild(label);
+    li.appendChild(prioritySpan);
     li.appendChild(deleteIcon);
     taskUl.appendChild(li);
     ulMain.appendChild(taskUl);
@@ -75,10 +125,14 @@ function addTask() {
     alert("Input is empty");
     return;
   }
+  // Get the priority value from the priority input (assume it has id="priority")
+  var priorityInput = document.querySelector("#priority");
+  var priorityValue = priorityInput ? priorityInput.value : "low";
   todos.push({
     id: Date.now(), // ✅ unique ID
     text: input,
-    completed: false
+    completed: false,
+    priority: priorityValue
   });
   renderTasks();
   saveTasks();
